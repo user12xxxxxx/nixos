@@ -19,7 +19,7 @@
     in {
       templates = {
         cpp = {
-          path = ./devShells/cpp;
+          path = ./devShells/c;
           description = "C dev environment";
         };
         python = {
@@ -27,7 +27,7 @@
           description = "Python dev environment";
         };
         rust1 = {
-          path = ./devShells/rust1;
+          path = ./devShells/rust;
           description = "Rust dev environment";
         };
       };
