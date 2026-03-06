@@ -1,7 +1,7 @@
 { config, pkgs, inputs, lib, ... }:
 
 let
-  inherit (lib.hm.gvariant) mkUint32;
+  # inherit (lib.hm.gvariant) mkUint32;
   
   unstable = import inputs.unstable {
     system = pkgs.stdenv.hostPlatform.system;

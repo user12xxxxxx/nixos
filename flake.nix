@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "flake for hp14";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -17,6 +17,20 @@
       username = "nautesh";
       
     in {
+      templates = {
+        cpp = {
+          path = ./devShells/cpp;
+          description = "C dev environment";
+        };
+        python = {
+          path = ./devShells/python;
+          description = "Python dev environment";
+        };
+        rust1 = {
+          path = ./devShells/rust1;
+          description = "Rust dev environment";
+        };
+      };
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         specialArgs = {
         	inherit inputs;
