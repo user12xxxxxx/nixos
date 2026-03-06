@@ -98,9 +98,8 @@ in
         enable-fullscreen = false;
         show-notifications = false;
       };
-      "org/gnome/shell/extensions/color-picker" = {
-        enable-systray = false;
-      };
+      # "org/gnome/shell/extensions/color-picker" = {
+      # };
       "org/gnome/shell/extensions/gnome-ui-tune" = {
         increase-thumbnails-size = "400%";
       };
