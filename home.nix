@@ -1,6 +1,8 @@
 { config, pkgs, inputs, lib, ... }:
 
 let
+  inherit (lib.hm.gvariant) mkUint32;
+  
   unstable = import inputs.unstable {
     system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
@@ -38,7 +40,7 @@ let
     zed-editor
     # valent
     gnome-extension-manager
-    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
+    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     blackbox-terminal
     refine
   ];
@@ -99,29 +101,25 @@ in
       "org/gnome/desktop/sound" = {
         event-sounds = false;
       };
-      "/org/gnome/shell/extensions/color-picker" = {
+      "org/gnome/shell/extensions/color-picker" = {
         enable-systray = false;
       };
-      "/org/gnome/shell/extensions/gnome-ui-tune" = {
+      "org/gnome/shell/extensions/gnome-ui-tune" = {
         increase-thumbnails-size = "400%";
       };
-      "/org/gnome/shell/extensions/just-perfection" = {
+      "org/gnome/shell/extensions/just-perfection" = {
         dash = false;
       };
       "org/gnome/shell/extensions/vitals" = {
-            update-time = 1;
-            show-fan = false;
-            icon-style = 1;
-            show-battery = true;
-            hot-sensors = [ "_memory_usage_" "__network-rx_max__" "_processor_usage_" ];
-            menu-centered = true;
+        update-time = 1;
+        show-fan = false;
+        icon-style = 1;
+        show-battery = true;
+        hot-sensors = [ "_memory_usage_" "_processor_usage_" "__network-rx_max__" ];
+        menu-centered = true;
       };
-      "/org/gnome/shell/extensions/color-picker" = {
+      "org/gnome/shell/extensions/color-picker" = {
         enable-format = true;
-      };
-      "/org/gnome/shell/extensions/color-picker/" = {
-        enable-notify = true;
-        notify-style = mkUint32 1;
       };
     };
   };
