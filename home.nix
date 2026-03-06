@@ -98,9 +98,6 @@ in
         enable-fullscreen = false;
         show-notifications = false;
       };
-      "org/gnome/desktop/sound" = {
-        event-sounds = false;
-      };
       "org/gnome/shell/extensions/color-picker" = {
         enable-systray = false;
       };
@@ -109,6 +106,9 @@ in
       };
       "org/gnome/shell/extensions/just-perfection" = {
         dash = false;
+      };
+      "org/gnome/shell/extensions/clipboard-indicator" = {
+        toggle-menu = [ "<Super>v" ];
       };
       "org/gnome/shell/extensions/vitals" = {
         update-time = 1;
@@ -121,6 +121,9 @@ in
       "org/gnome/shell/extensions/color-picker" = {
         enable-format = true;
       };
+      # "org/gnome/desktop/sound" = {
+      #   event-sounds = false;
+      # };
     };
   };
 }
