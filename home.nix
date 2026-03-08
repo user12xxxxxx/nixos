@@ -1,5 +1,5 @@
-{ config, pkgs, inputs, lib, ... }:
-
+{ pkgs, inputs, ... }:
+  
 let
   # inherit (lib.hm.gvariant) mkUint32;
   
@@ -20,7 +20,8 @@ let
     micro
     gnome-pomodoro
     adw-gtk3
-    tesseract4
+    nil
+    eza
   ];
   
   userCursors = with pkgs; [
@@ -55,25 +56,8 @@ let
     gnome-40-ui-improvements
     vitals
     launch-new-instance
-    text-grabber
+    # text-grabber
   ];
-  
-  enabledExtensions = [
-    "appindicatorsupport@rgcjonas.gmail.com"
-    "caffeine@patapon.info"
-    "clipboard-indicator@tudmotu.com"
-    "color-picker@tuberry"
-    "gnome-ui-tune@itstime.tech"
-    "gsconnect@andyholmes.github.io"
-    "just-perfection-desktop@just-perfection"
-    # "pomodoro@arun.codito.in"
-    "static-workspace-background@CleoMenezesJr.github.io"
-    "Vitals@CoreCoding.com"
-    "lomotion@lorens.com"
-    "screentospace@dilzhan.dev"
-    "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
-  ];
-
 in
 {
   home = {
@@ -83,86 +67,14 @@ in
     packages = userPkgsTui ++ userPkgsGui ++ userCursors ++ gnomeExtensions;
   };
   
+  imports = [
+      ./modules/fish.nix
+      ./modules/dconf.nix
+      ./modules/zed.nix
+      ./modules/git.nix
+    ];
+  
   programs = {
     home-manager.enable = true;
-    git = {
-      enable = true;
-      settings = {
-        user = {
-          name = "user12xxxxxx";
-          email = "nauteshkanojiya@gmail.com";
-        };
-        init.defaultBranch = "main";
-      };
-    };
-    fish = {
-      enable = true;
-      shellAliases = {
-        grep = "grep --color=auto";
-        f = "yazi";
-        b = "btop --force-utf";
-        c = "clear";
-        gc = "git add . && git commit -m 'test'";
-        gr = "git reset --soft origin/main";
-      };
-      functions = {
-        fish_prompt = {
-          description = "Write out the prompt";
-          body = ''
-            printf '%s@%s %s%s%s > ' $USER $hostname \
-              (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
-          '';
-        };
-      };
-      interactiveShellInit = ''
-        set -g fish_greeting ""
-  
-        set -gx ATUIN_NOBIND "true"
-        atuin init fish | source
-        bind \cr _atuin_search
-        bind -M insert \cr _atuin_search
-      '';
-    };
-  };
-  dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/shell" = {
-        enabled-extensions = enabledExtensions;
-      };
-      "org/gnome/shell/extensions/appindicator" = {
-        legacy-tray-enabled = false;
-      };
-      "org/gnome/shell/extensions/caffeine" = {
-        restore-state = true;
-        enable-fullscreen = false;
-        show-notifications = false;
-      };
-      # "org/gnome/shell/extensions/color-picker" = {
-      # };
-      "org/gnome/shell/extensions/gnome-ui-tune" = {
-        increase-thumbnails-size = "400%";
-      };
-      "org/gnome/shell/extensions/just-perfection" = {
-        dash = false;
-      };
-      "org/gnome/shell/extensions/clipboard-indicator" = {
-        toggle-menu = [ "<Super>v" ];
-      };
-      "org/gnome/shell/extensions/vitals" = {
-        update-time = 1;
-        show-fan = false;
-        icon-style = 1;
-        show-battery = true;
-        hot-sensors = [ "_memory_usage_" "_processor_usage_" "__network-rx_max__" ];
-        menu-centered = true;
-      };
-      "org/gnome/shell/extensions/color-picker" = {
-        enable-format = true;
-      };
-      # "org/gnome/desktop/sound" = {
-      #   event-sounds = false;
-      # };
-    };
   };
 }

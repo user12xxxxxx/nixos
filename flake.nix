@@ -26,7 +26,7 @@
           path = ./devShells/python;
           description = "Python dev environment";
         };
-        rust1 = {
+        rust = {
           path = ./devShells/rust;
           description = "Rust dev environment";
         };

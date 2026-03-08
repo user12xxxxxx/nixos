@@ -1,11 +1,10 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 let
   unstable = import inputs.unstable {
       system = pkgs.stdenv.hostPlatform.system;
       config.allowUnfree = true; 
-  };
-  
+  }; 
 in
 {
   imports =
@@ -59,6 +58,7 @@ in
     appimage.enable = true;
     appimage.binfmt = true;
     firefox.enable = true;
+    nix-ld.enable = true;
     # steam.enable = true;
     nautilus-open-any-terminal = {
         enable = true;
