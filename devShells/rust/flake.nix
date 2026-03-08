@@ -47,7 +47,6 @@
           ];
           shellHook = ''
             export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk4}/share/gsettings-schemas/${pkgs.gtk4.name}:$XDG_DATA_DIRS
-
             echo "🦀 Rust + 📦 GTK4"
           '';
         };
@@ -69,7 +68,6 @@
           ];
           shellHook = ''
             export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk4}/share/gsettings-schemas/${pkgs.gtk4.name}:$XDG_DATA_DIRS
-
             echo "🦀 Rust + 📦 GTK4 + 👣 Adwaita"
           '';
         };

@@ -40,7 +40,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; }; # Passes inputs to home.nix
+            home-manager.extraSpecialArgs = { inherit inputs; }; 
             home-manager.users.${username} = import ./home.nix;
           }
         ];

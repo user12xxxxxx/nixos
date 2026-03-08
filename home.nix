@@ -9,19 +9,18 @@ let
   };
   
   userPkgsTui = with pkgs; [
-  	atuin 
-  	bat 
-  	btop 
-  	nh 
-  	fish
-  	wl-clipboard
-  	scrcpy 
-  	yazi
-  	micro
-  	gnome-pomodoro
+    atuin 
+    bat 
+    btop 
+    nh 
+    fish
+    wl-clipboard
+    scrcpy 
+    yazi
+    micro
+    gnome-pomodoro
     adw-gtk3
-    nil
-    nixd
+    tesseract4
   ];
   
   userCursors = with pkgs; [
@@ -35,7 +34,7 @@ let
     pika-backup
     kdePackages.kdenlive
     onlyoffice-desktopeditors
-    telegram-desktop
+    # telegram-desktop
     vscode
     zed-editor
     # valent
@@ -55,6 +54,8 @@ let
     clipboard-indicator
     gnome-40-ui-improvements
     vitals
+    launch-new-instance
+    text-grabber
   ];
   
   enabledExtensions = [
@@ -70,6 +71,7 @@ let
     "Vitals@CoreCoding.com"
     "lomotion@lorens.com"
     "screentospace@dilzhan.dev"
+    "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
   ];
 
 in
@@ -92,6 +94,34 @@ in
         };
         init.defaultBranch = "main";
       };
+    };
+    fish = {
+      enable = true;
+      shellAliases = {
+        grep = "grep --color=auto";
+        f = "yazi";
+        b = "btop --force-utf";
+        c = "clear";
+        gc = "git add . && git commit -m 'test'";
+        gr = "git reset --soft origin/main";
+      };
+      functions = {
+        fish_prompt = {
+          description = "Write out the prompt";
+          body = ''
+            printf '%s@%s %s%s%s > ' $USER $hostname \
+              (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+          '';
+        };
+      };
+      interactiveShellInit = ''
+        set -g fish_greeting ""
+  
+        set -gx ATUIN_NOBIND "true"
+        atuin init fish | source
+        bind \cr _atuin_search
+        bind -M insert \cr _atuin_search
+      '';
     };
   };
   dconf = {
