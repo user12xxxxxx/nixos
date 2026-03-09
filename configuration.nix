@@ -41,7 +41,6 @@ in
   services = {
   	displayManager.gdm.enable = true;
   	desktopManager.gnome.enable = true;
-  	# xserver.enable = false
   	printing.enable = true;
   	flatpak.enable = true;
   	pipewire = {
@@ -95,8 +94,7 @@ in
   
   environment.systemPackages = with pkgs; [
     git
-    ptyxis
-    # unstable.satty
+    unstable.ptyxis
   ];
 
   environment.gnome.excludePackages = (with pkgs; [

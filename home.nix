@@ -9,18 +9,15 @@ let
   };
   
   userPkgsTui = with pkgs; [
-    atuin 
     bat 
-    btop 
+    unstable.btop 
     nh 
-    fish
     wl-clipboard
     scrcpy 
     yazi
     micro
     gnome-pomodoro
     adw-gtk3
-    nil
     eza
   ];
   
@@ -36,8 +33,7 @@ let
     kdePackages.kdenlive
     onlyoffice-desktopeditors
     # telegram-desktop
-    vscode
-    zed-editor
+    # vscode
     # valent
     gnome-extension-manager
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
@@ -72,6 +68,7 @@ in
       ./modules/dconf.nix
       ./modules/zed.nix
       ./modules/git.nix
+      ./modules/atuin.nix
     ];
   
   programs = {
