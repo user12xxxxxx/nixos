@@ -95,7 +95,14 @@ in
   environment.systemPackages = with pkgs; [
     git
     unstable.ptyxis
+    micro-with-wl-clipboard
   ];
+  
+  environment.variables = {
+    EDITOR = "micro";
+    SYSTEMD_EDITOR = "micro";
+    VISUAL = "micro";
+  };
 
   environment.gnome.excludePackages = (with pkgs; [
     gnome-tour

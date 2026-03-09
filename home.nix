@@ -12,10 +12,8 @@ let
     bat 
     unstable.btop 
     nh 
-    wl-clipboard
     scrcpy 
     yazi
-    micro
     gnome-pomodoro
     adw-gtk3
     eza
@@ -33,7 +31,6 @@ let
     kdePackages.kdenlive
     onlyoffice-desktopeditors
     # telegram-desktop
-    # vscode
     # valent
     gnome-extension-manager
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
@@ -52,7 +49,6 @@ let
     gnome-40-ui-improvements
     vitals
     launch-new-instance
-    # text-grabber
   ];
 in
 {

@@ -14,19 +14,17 @@ programs.fish = {
       gr = "git reset --soft origin/main";
       jctl = "journalctl -p 3 -xb";
       
-      ls = "eza -al --color=always --group-directories-first "; # my preferred listing
-      la = "aeza -a --color=always --group-directories-first ";  # all files and dirs
-      ll = "eza -l --color=always --group-directories-first ";  # long format
+      ll = "eza -al --color=always --group-directories-first "; # my preferred listing
+      la = "eza -a --color=always --group-directories-first ";  # all files and dirs
+      ls = "eza -l --color=always --group-directories-first ";  # long format
       lt = "eza -aT --color=always --group-directories-first "; # tree listing
-      lz = "eza -al --color=always --group-directories-first ../ "; # ls on the PARENT directory
-      lzz = "eza -al --color=always --group-directories-first ../../ "; # ls on directory 2 levels up
-      lzzz = "eza -al --color=always --group-directories-first ../../../ "; # ls on directory 3 levels up
+      "l." = "eza -al --color=always --group-directories-first ../ "; # ls on the PARENT directory
+      "l.." = "eza -al --color=always --group-directories-first ../../ "; # ls on directory 2 levels up
+      "l..." = "eza -al --color=always --group-directories-first ../../../ "; # ls on directory 3 levels up
     };
     
     interactiveShellInit = ''
       set TERM "xterm-256color"
-      set EDITOR "micro"       
-      set VISUAL "zeditor ."
       set -g fish_greeting ""
       set -x MANPAGER "less"
 

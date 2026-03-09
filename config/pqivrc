@@ -1,0 +1,33 @@
+[options]
+hide-info-box = 1
+browse = 1
+sort = 1
+sort-key = mtime
+
+window-title = $BASEFILENAME ($ZOOM%) [$IMAGE_NUMBER/$IMAGE_COUNT]
+
+action = toggle_scale_mode(3)
+# action = set_scale_mode_fit_px(900px, 900px)
+# scale-mode-screen-fraction = 1.5
+
+# video = false
+# disable-backends = libav
+slideshow-interval = 3
+watch-directories = 1
+# low-memory = true
+max-depth = 1
+
+transparent-background = 1
+lazy-load = 1
+recreate-window = 1
+
+[keybindings]
+g { jump_dialog() }
+- { set_slideshow_interval_relative(-1) }
+<equal> { set_slideshow_interval_relative(1) }
+<Up>  { set_scale_level_relative(1.1) }
+<Down> { set_scale_level_relative(0.9) }
+<Left> { goto_file_relative(1) }
+<Right> { goto_file_relative(-1) }
+<Page_Up> { goto_file_relative(1) }
+<Page_Down> { goto_file_relative(-1) }

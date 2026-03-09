@@ -1,0 +1,89 @@
+/* =========================================
+ * Dark Mode – Material 3 Inspired
+ * ========================================= */
+@media (prefers-color-scheme: dark) {
+
+    /* === MASTER ACCENT STRENGTH === */
+    @define-color dark_surface_base mix(#1d1d20, @accent_bg_color, 0.18);
+    @define-color dark_surface_container mix(#222226, @accent_bg_color, 0.22);
+    @define-color dark_surface_strong mix(#2a2a2e, @accent_bg_color, 0.28);
+
+    /* Main Surfaces */
+    @define-color window_bg_color @dark_surface_base;
+    @define-color view_bg_color @dark_surface_base;
+
+    /* Headerbar more pronounced */
+    @define-color headerbar_bg_color @dark_surface_strong;
+    @define-color headerbar_backdrop_color @dark_surface_container;
+
+    /* Popovers / Dialogs */
+    @define-color popover_bg_color @dark_surface_container;
+    @define-color dialog_bg_color @dark_surface_container;
+
+    /* Cards */
+    @define-color card_bg_color mix(#2a2a2e, @accent_bg_color, 0.20);
+
+    /* Sidebar clearly colored */
+    @define-color sidebar_bg_color @dark_surface_strong;
+    @define-color sidebar_backdrop_color @dark_surface_container;
+    @define-color sidebar_border_color mix(rgba(0,0,0,0.40), @accent_bg_color, 0.25);
+
+    @define-color secondary_sidebar_bg_color @dark_surface_strong;
+    @define-color secondary_sidebar_backdrop_color @dark_surface_container;
+    @define-color secondary_sidebar_border_color mix(rgba(0,0,0,0.30), @accent_bg_color, 0.25);
+
+    /* Panel */
+    @define-color panel_bg_color @window_bg_color;
+    @define-color panel_button_bg_color transparent;
+    @define-color panel_hover_bg_color @card_bg_color;
+
+    /* Compatibility */
+    @define-color theme_bg_color @window_bg_color;
+    @define-color theme_base_color @view_bg_color;
+    @define-color theme_selected_bg_color @accent_bg_color;
+}
+
+/* =========================================
+ * Light Mode – Material 3 Inspired
+ * ========================================= */
+@media (prefers-color-scheme: light) {
+
+    /* === MASTER ACCENT STRENGTH === */
+    @define-color light_surface_base mix(#fafafa, @accent_bg_color, 0.22);
+    @define-color light_surface_container mix(#ffffff, @accent_bg_color, 0.26);
+    @define-color light_surface_strong mix(#f3f3f5, @accent_bg_color, 0.30);
+
+    /* Main Surfaces */
+    @define-color window_bg_color @light_surface_base;
+    @define-color view_bg_color @light_surface_base;
+
+    /* Headerbar clearly tinted */
+    @define-color headerbar_bg_color @light_surface_strong;
+    @define-color headerbar_backdrop_color @light_surface_container;
+
+    /* Popovers / Dialogs */
+    @define-color popover_bg_color @light_surface_container;
+    @define-color dialog_bg_color @light_surface_container;
+
+    /* Cards */
+    @define-color card_bg_color mix(#ffffff, @accent_bg_color, 0.20);
+
+    /* Sidebar clearly accent-washed */
+    @define-color sidebar_bg_color @light_surface_strong;
+    @define-color sidebar_backdrop_color @light_surface_container;
+    @define-color sidebar_border_color mix(rgba(0,0,0,0.6), @accent_bg_color, 0.8);
+
+    @define-color secondary_sidebar_bg_color @light_surface_strong;
+    @define-color secondary_sidebar_backdrop_color @light_surface_container;
+    @define-color secondary_sidebar_border_color mix(rgba(0,0,0,0.6), @accent_bg_color, 0.8);
+
+    /* Panel */
+    @define-color panel_bg_color @window_bg_color;
+    @define-color panel_button_bg_color transparent;
+    @define-color panel_hover_bg_color @card_bg_color;
+
+    /* Compatibility */
+    @define-color theme_bg_color @window_bg_color;
+    @define-color theme_base_color @view_bg_color;
+    @define-color theme_selected_bg_color @accent_bg_color;
+}
