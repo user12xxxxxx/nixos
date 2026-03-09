@@ -12,6 +12,7 @@ let
     bat 
     unstable.btop 
     nh 
+    fish
     scrcpy 
     yazi
     gnome-pomodoro
@@ -60,11 +61,11 @@ in
   };
   
   imports = [
-      ./modules/fish.nix
       ./modules/dconf.nix
       ./modules/zed.nix
       ./modules/git.nix
       ./modules/atuin.nix
+      ./modules/configSync.nix
     ];
   
   programs = {

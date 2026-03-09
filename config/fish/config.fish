@@ -1,4 +1,3 @@
-# name: sashimi
 function fish_prompt
   set -l last_status $status
   set -l cyan (set_color -o cyan)
@@ -78,7 +77,7 @@ atuin init fish | source
 bind \cr _atuin_search
 bind -M insert \cr _atuin_search
 
-set TERM xterm-256color
+# set TERM xterm-256color
 # set EDITOR micro
 # set VISUAL "zeditor ."
 set -g fish_greeting ""
@@ -96,7 +95,7 @@ alias la 'aeza -a --color=always --group-directories-first '
 alias ll 'eza -l --color=always --group-directories-first '
 alias ls 'eza -al --color=always --group-directories-first '
 alias lt 'eza -aT --color=always --group-directories-first '
-alias lz 'eza -al --color=always --group-directories-first ../ '
-alias lzz 'eza -al --color=always --group-directories-first ../../ '
-alias lzzz 'eza -al --color=always --group-directories-first ../../../ '
+alias l. 'eza -al --color=always --group-directories-first ../ '
+alias l.. 'eza -al --color=always --group-directories-first ../../ '
+alias l... 'eza -al --color=always --group-directories-first ../../../ '
 alias mc micro

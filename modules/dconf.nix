@@ -1,6 +1,8 @@
-{ ... }:
+{ lib, ... }:
+
 
 let
+  inherit (lib.hm.gvariant) mkUint32 mkTuple;
   enabledExtensions = [
     "appindicatorsupport@rgcjonas.gmail.com"
     "caffeine@patapon.info"
@@ -23,6 +25,9 @@ in
     settings = {
       "org/gnome/shell" = {
         enabled-extensions = enabledExtensions;
+      };
+      "org/gnome/desktop/interface" = {
+        show-battery-percentage = true;
       };
       "org/gnome/shell/extensions/appindicator" = {
         legacy-tray-enabled = false;
@@ -57,6 +62,18 @@ in
       # "org/gnome/desktop/sound" = {
       #   event-sounds = false;
       # };
+      "com/raggesilver/BlackBox" = {
+        show-headerbar = false;
+        floating-controls = true;
+        theme-bold-is-bright = true;
+        easy-copy-paste = true;
+        command-as-login-shell = false;
+        use-custom-command = true;
+        custom-shell-command = "/etc/profiles/per-user/nautesh/bin/fish";
+        cursor-shape = mkUint32 1;
+        scrollback-mode = mkUint32 1;
+        terminal-padding = mkTuple[ (mkUint32 10) (mkUint32 10) (mkUint32 10) (mkUint32 10)];
+      };
     };
   };
 }
