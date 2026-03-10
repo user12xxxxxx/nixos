@@ -1,6 +1,5 @@
 { lib, ... }:
 
-
 let
   inherit (lib.hm.gvariant) mkUint32 mkTuple;
   enabledExtensions = [
@@ -24,6 +23,7 @@ in
     enable = true;
     settings = {
       "org/gnome/shell" = {
+        disable-user-extensions = false;
         enabled-extensions = enabledExtensions;
       };
       "org/gnome/desktop/interface" = {
