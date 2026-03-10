@@ -23,11 +23,14 @@ in
     enable = true;
     settings = {
       "org/gnome/shell" = {
-        disable-user-extensions = false;
         enabled-extensions = enabledExtensions;
       };
       "org/gnome/desktop/interface" = {
         show-battery-percentage = true;
+        gtk-theme = "adw-gtk3-dark";
+      };
+      "org/gnome/mutter" = {
+        attach-modal-dialogs = true;
       };
       "org/gnome/shell/extensions/appindicator" = {
         legacy-tray-enabled = false;
