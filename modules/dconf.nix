@@ -1,7 +1,7 @@
-{ lib, ... }:
+{ ... }:
 
 let
-  inherit (lib.hm.gvariant) mkUint32 mkTuple;
+  # inherit (lib.hm.gvariant) mkUint32 mkTuple;
   enabledExtensions = [
     "appindicatorsupport@rgcjonas.gmail.com"
     "caffeine@patapon.info"
@@ -47,6 +47,7 @@ in
       };
       "org/gnome/shell/extensions/just-perfection" = {
         dash = false;
+        startup-status = 0;
       };
       "org/gnome/shell/extensions/clipboard-indicator" = {
         toggle-menu = [ "<Super>v" ];
@@ -65,18 +66,18 @@ in
       # "org/gnome/desktop/sound" = {
       #   event-sounds = false;
       # };
-      "com/raggesilver/BlackBox" = {
-        show-headerbar = false;
-        floating-controls = true;
-        theme-bold-is-bright = true;
-        easy-copy-paste = true;
-        command-as-login-shell = false;
-        use-custom-command = true;
-        custom-shell-command = "/etc/profiles/per-user/nautesh/bin/fish";
-        cursor-shape = mkUint32 1;
-        scrollback-mode = mkUint32 1;
-        terminal-padding = mkTuple[ (mkUint32 10) (mkUint32 10) (mkUint32 10) (mkUint32 10)];
-      };
+      # "com/raggesilver/BlackBox" = {
+      #   show-headerbar = false;
+      #   floating-controls = true;
+      #   theme-bold-is-bright = true;
+      #   easy-copy-paste = true;
+      #   command-as-login-shell = false;
+      #   use-custom-command = true;
+      #   custom-shell-command = "/etc/profiles/per-user/nautesh/bin/fish";
+      #   cursor-shape = mkUint32 1;
+      #   scrollback-mode = mkUint32 1;
+      #   terminal-padding = mkTuple[ (mkUint32 10) (mkUint32 10) (mkUint32 10) (mkUint32 10)];
+      # };
     };
   };
 }

@@ -51,7 +51,7 @@ in
   	    wireplumber.enable = true;
     };
   };
-
+  
   security.rtkit.enable = true;
   programs = {
     appimage.enable = true;

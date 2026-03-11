@@ -35,7 +35,8 @@ let
     # valent
     gnome-extension-manager
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
-    blackbox-terminal
+    # blackbox-terminal
+    ghostty
     refine
   ];
   

@@ -1,0 +1,7 @@
+gtk-titlebar = false
+cursor-style = bar
+font-size = 16
+command = /etc/profiles/per-user/nautesh/bin/fish --login --interactive
+window-padding-x = 10
+window-padding-y = 10
+
