@@ -18,6 +18,7 @@ let
     gnome-pomodoro
     adw-gtk3
     eza
+    helix
   ];
   
   userCursors = with pkgs; [
