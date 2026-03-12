@@ -2,20 +2,18 @@
 
 let
   unstable = import inputs.unstable {
-      system = pkgs.stdenv.hostPlatform.system;
-      config.allowUnfree = true; 
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true; 
   }; 
 in
 {
   imports =
     [ ./hardware-configuration.nix ];
     
-  swapDevices = [
-    {
-      device="/dev/disk/by-uuid/419d433e-2ff1-4359-87ad-ecd397133677";
-      priority = 100;
-    }
-  ];
+  swapDevices = [{
+    device="/dev/disk/by-uuid/419d433e-2ff1-4359-87ad-ecd397133677";
+    priority = 100;
+  }];
   
   boot = {
     loader.systemd-boot.enable = true;
@@ -44,11 +42,18 @@ in
   	printing.enable = true;
   	flatpak.enable = true;
   	pipewire = {
-  	    enable = true;
-  	    alsa.enable = true;
-  	    alsa.support32Bit = true;
-  	    pulse.enable = true;
-  	    wireplumber.enable = true;
+ 	    enable = true;
+ 	    alsa.enable = true;
+ 	    alsa.support32Bit = true;
+ 	    pulse.enable = true;
+ 	    wireplumber.enable = true;
+    };
+    keyd = {
+      enable = true;
+      keyboards.default = {
+        ids = [ "*" ];
+        settings.main = { capslock = "overload(meta, esc)"; };
+      };
     };
   };
   
@@ -59,23 +64,13 @@ in
     firefox.enable = true;
     nix-ld.enable = true;
     # steam.enable = true;
-    nautilus-open-any-terminal = {
-        enable = true;
-        terminal = "blackbox";
-    };
   };
+  xdg.terminal-exec.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  nix = {
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 5d";
-    };
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
   };
 
   users.users.nautesh = {
@@ -94,15 +89,8 @@ in
   
   environment.systemPackages = with pkgs; [
     git
-    unstable.ptyxis
-    micro-with-wl-clipboard
+    unstable.micro-with-wl-clipboard
   ];
-  
-  environment.variables = {
-    EDITOR = "micro";
-    SYSTEMD_EDITOR = "micro";
-    VISUAL = "micro";
-  };
 
   environment.gnome.excludePackages = (with pkgs; [
     gnome-tour
@@ -122,7 +110,7 @@ in
     yelp        # help viewer
     geary       # email client
     seahorse    # password manager
-    ]);
+  ]);
  
   networking.firewall.enable = false;
   system.stateVersion = "24.05"; # Did you read the comment?

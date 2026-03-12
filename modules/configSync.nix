@@ -2,7 +2,7 @@
 
 let
   dotfilesDir = "${config.home.homeDirectory}/.hp14/config";
-  configs = [ "gtk-3.0" "gtk-4.0" "micro" "pqivrc" "satty" "btop" "kicad" "fish" "ghostty" "helix" ];
+  configs = [ "gtk-3.0" "gtk-4.0" "micro" "pqivrc" "satty" "btop" "kicad" "fish" "ghostty" ];
 in
 {
   xdg.configFile =

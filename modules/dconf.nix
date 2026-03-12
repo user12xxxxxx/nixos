@@ -40,8 +40,6 @@ in
         enable-fullscreen = false;
         show-notifications = false;
       };
-      # "org/gnome/shell/extensions/color-picker" = {
-      # };
       "org/gnome/shell/extensions/gnome-ui-tune" = {
         increase-thumbnails-size = "400%";
       };
@@ -63,21 +61,23 @@ in
       "org/gnome/shell/extensions/color-picker" = {
         enable-format = true;
       };
-      # "org/gnome/desktop/sound" = {
-      #   event-sounds = false;
-      # };
-      # "com/raggesilver/BlackBox" = {
-      #   show-headerbar = false;
-      #   floating-controls = true;
-      #   theme-bold-is-bright = true;
-      #   easy-copy-paste = true;
-      #   command-as-login-shell = false;
-      #   use-custom-command = true;
-      #   custom-shell-command = "/etc/profiles/per-user/nautesh/bin/fish";
-      #   cursor-shape = mkUint32 1;
-      #   scrollback-mode = mkUint32 1;
-      #   terminal-padding = mkTuple[ (mkUint32 10) (mkUint32 10) (mkUint32 10) (mkUint32 10)];
-      # };
+      "org/gnome/shell/keybindings" = {
+        toggle-quick-settings = [];
+        toggle-application-view = [];
+      };
+      "org/gnome/desktop/wm/keybindings" = {
+        close = [ "<Super>q" ];
+        move-to-workspace-left = [ "<Super>d" ];
+        move-to-workspace-right = [ "<Super>f" ];
+        switch-to-workspace-left = [ "<Super>a" ];
+        switch-to-workspace-right = [ "<Super>s" ];
+        switch-windows = [ "<Super>e" ];
+        toggle-maximized = [ "<Super>Up" ];
+        switch-applications = [ "<Super>w" ];
+        switch-applications-backward = [ "<Shift><Super>w" ];
+        cycle-group = ["<Super>e"];
+        cycle-group-backward = ["<Shift><Super>e"];
+      };
     };
   };
 }

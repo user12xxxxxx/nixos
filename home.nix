@@ -18,7 +18,6 @@ let
     gnome-pomodoro
     adw-gtk3
     eza
-    helix
   ];
   
   userCursors = with pkgs; [
@@ -36,7 +35,6 @@ let
     # valent
     gnome-extension-manager
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
-    # blackbox-terminal
     ghostty
     refine
   ];
@@ -68,6 +66,8 @@ in
       ./modules/git.nix
       ./modules/atuin.nix
       ./modules/configSync.nix
+      ./modules/helix.nix
+      ./modules/xdg.nix
     ];
   
   programs = {

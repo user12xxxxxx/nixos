@@ -4,4 +4,5 @@ font-size = 16
 command = /etc/profiles/per-user/nautesh/bin/fish --login --interactive
 window-padding-x = 10
 window-padding-y = 10
-
+# window-width = 50
+window-height = 12

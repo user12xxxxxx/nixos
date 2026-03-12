@@ -14,8 +14,7 @@
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
     let
       hostname = "nixos-nvm";
-      username = "nautesh";
-      
+      username = "nautesh";    
     in {
       templates = {
         cpp = {
@@ -32,9 +31,7 @@
         };
       };
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-        	inherit inputs;
-        };
+        specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager {
