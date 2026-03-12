@@ -35,4 +35,16 @@
       };
     };
   };
+  
+  xdg.desktopEntries = {
+    "Helix" = {
+      name = "Helix";
+      genericName = "Text Editor";
+      exec = "env ghostty --maximize -e hx %F"; 
+      terminal = false; 
+      icon = "helix"; 
+      categories = [ "Utility" "TextEditor" ];
+      mimeType = [ "text/plain" ];
+    };
+  };
 }

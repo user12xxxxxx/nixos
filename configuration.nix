@@ -63,7 +63,6 @@ in
     appimage.binfmt = true;
     firefox.enable = true;
     nix-ld.enable = true;
-    # steam.enable = true;
   };
   xdg.terminal-exec.enable = true;
 
