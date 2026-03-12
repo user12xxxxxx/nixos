@@ -13,7 +13,6 @@ let
     # "pomodoro@arun.codito.in"
     "static-workspace-background@CleoMenezesJr.github.io"
     "Vitals@CoreCoding.com"
-    "lomotion@lorens.com"
     "screentospace@dilzhan.dev"
     "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
   ];
@@ -31,6 +30,7 @@ in
       };
       "org/gnome/mutter" = {
         attach-modal-dialogs = true;
+        overlay-key = "";
       };
       "org/gnome/shell/extensions/appindicator" = {
         legacy-tray-enabled = false;
@@ -64,6 +64,7 @@ in
       "org/gnome/shell/keybindings" = {
         toggle-quick-settings = [];
         toggle-application-view = [];
+        toggle-overview = [ "<Super>space" ];
       };
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super>q" ];
