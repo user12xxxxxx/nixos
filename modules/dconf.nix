@@ -1,7 +1,6 @@
 { ... }:
 
 let
-  # inherit (lib.hm.gvariant) mkUint32 mkTuple;
   enabledExtensions = [
     "appindicatorsupport@rgcjonas.gmail.com"
     "caffeine@patapon.info"
@@ -10,7 +9,6 @@ let
     "gnome-ui-tune@itstime.tech"
     "gsconnect@andyholmes.github.io"
     "just-perfection-desktop@just-perfection"
-    # "pomodoro@arun.codito.in"
     "static-workspace-background@CleoMenezesJr.github.io"
     "Vitals@CoreCoding.com"
     "screentospace@dilzhan.dev"

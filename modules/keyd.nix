@@ -1,14 +1,19 @@
 { ... }:
 
 {
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Serial Keyboards]
+    MatchUdevType=keyboard
+    MatchName=keyd virtual keyboard
+    AttrKeyboardIntegration=internal
+  '';
   services.keyd = {
     enable = true;
     keyboards.default = {
       ids = [ "*" ];
       settings = {
-        main = { 
-          capslock = "overload(control,esc)"; 
-          esc = "capslock";
+        main = {
+          capslock = "overload(control,esc)";
           control = "oneshot(control)";
           shift = "oneshot(shift)";
           leftalt = "overload(meta,toggle(l1))";
@@ -20,18 +25,20 @@
           r = "4";
           f = "5";
           v = "6";
-          d = "9";
+          d = "backspace";
           e = "8";
           c = "7";
           s = "0";
-          # s = ""
-          
+          w = "9";
+
           y = "+";
           u = "-";
           i = "*";
           o = "/";
-          enter = "=";
-          
+          ";" = "=";
+
+          n = "home";
+          m = "end";
           h = "left";
           j = "down";
           k = "up";
