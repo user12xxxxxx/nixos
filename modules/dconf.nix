@@ -7,7 +7,6 @@ let
     "clipboard-indicator@tudmotu.com"
     "color-picker@tuberry"
     "gnome-ui-tune@itstime.tech"
-    "gsconnect@andyholmes.github.io"
     "just-perfection-desktop@just-perfection"
     "static-workspace-background@CleoMenezesJr.github.io"
     "Vitals@CoreCoding.com"

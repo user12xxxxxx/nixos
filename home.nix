@@ -40,7 +40,6 @@ let
   ];
   
   gnomeExtensions = with pkgs.gnomeExtensions; [
-    gsconnect	
     static-workspace-background
     just-perfection
     color-picker
@@ -50,6 +49,7 @@ let
     gnome-40-ui-improvements
     vitals
     launch-new-instance
+    valent
   ];
 in
 {
