@@ -9,7 +9,7 @@ let
     # "pqivrc"
     # "satty"
     # "btop"
-    "kicad"
+    # "kicad"
     "fish"
     "ghostty"
   ];

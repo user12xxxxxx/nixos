@@ -14,8 +14,7 @@
       settings = {
         main = {
           capslock = "overload(control,esc)";
-          
-          # pagedown = "oneshot(leftshift)";
+
           pagedown = "oneshot(shift)";
 
           leftcontrol = "oneshot(control)";

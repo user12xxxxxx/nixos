@@ -10,12 +10,7 @@
     ];
     settings = {
       theme = "base16_transparent";
-      # editor.cursor-shape = {
-        # normal = "bar";
-        # insert = "bar";
-        # select = "bar";
-      # };
-    };
+     };
     languages = { 
       language = [
         {

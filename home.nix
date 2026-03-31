@@ -1,14 +1,9 @@
-{ pkgs, inputs, unstablePkgs, ... }:
+{ pkgs, inputs, ... }:
   
 let
-  # unstable = import inputs.unstable {
-    # system = pkgs.stdenv.hostPlatform.system;
-    # config.allowUnfree = true;
-  # };
-  
   userPkgsTui = with pkgs; [
     bat 
-    unstablePkgs.btop 
+    btop 
     nh 
     fish
     scrcpy 
@@ -60,13 +55,13 @@ in
   
   imports = [
       ./modules/dconf.nix
-      # ./modules/zed.nix
+      ./modules/btop.nix
+      ./modules/drv.nix   
       ./modules/git.nix
       ./modules/atuin.nix
       ./modules/configSync.nix
       ./modules/helix.nix
       ./modules/xdg.nix
-      ./modules/drv.nix
     ];
   
   programs = {

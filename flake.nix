@@ -21,26 +21,25 @@
         config.allowUnfree = true;
       };
     in {
-        templates = {
-          clang.path = ./devShells/c;
-          python.path = ./devShells/python;
-          rust.path = ./devShells/rust;
-          arduino.path = ./devShells/arduino;
-        };
-        
-        nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs unstablePkgs; };
-          modules = [
-            ./configuration.nix
-            home-manager.nixosModules.home-manager {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs unstablePkgs; }; 
-                users.${username} = import ./home.nix;
-              };
-            }
-          ];
-        };
+      templates = {
+        clang.path = ./devShells/c;
+        python.path = ./devShells/python;
+        rust.path = ./devShells/rust;
+        arduino.path = ./devShells/arduino;
+      };
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs unstablePkgs; };
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs unstablePkgs; }; 
+              users.${username} = import ./home.nix;
+            };
+          }
+        ];
+      };
     };
 }

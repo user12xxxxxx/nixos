@@ -52,18 +52,7 @@
     };
   };
   
-  security = {
-    rtkit.enable = true;
-    sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [{
-        groups = [ "wheel" ];
-        keepEnv = true;
-        persist = true;
-      }];
-    };
-  };
+  security.rtkit.enable = true;
   programs = {
     appimage.enable = true;
     appimage.binfmt = true;
@@ -82,6 +71,9 @@
     isNormalUser = true;
     description = "nautesh";
     extraGroups = [ "networkmanager" "wheel" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkm0aJHFhElwpNRTVAW1tQ2P39xqpvG4iDpUDMjFrcu nauteshkanojiya@gmail.com"
+    ];
   };
   
   fonts.packages = with pkgs; [
@@ -94,7 +86,7 @@
   
   environment.systemPackages = with pkgs; [
     git
-    # unstablePkgs.micro-with-wl-clipboard
+    # unstable.micro-with-wl-clipboard
   ];
 
   environment.gnome.excludePackages = (with pkgs; [
