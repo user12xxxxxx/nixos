@@ -3,14 +3,18 @@
 {
   programs.helix = {
     enable = true;
-    extraPackages = [ pkgs.nixd pkgs.nil ];
+    extraPackages = with pkgs; [
+      nixd
+      nil
+      wl-clipboard
+    ];
     settings = {
       theme = "base16_transparent";
-      editor.cursor-shape = {
-        normal = "underline";
-        insert = "bar";
-        select = "underline";
-      };
+      # editor.cursor-shape = {
+        # normal = "bar";
+        # insert = "bar";
+        # select = "bar";
+      # };
     };
     languages = { 
       language = [
@@ -24,6 +28,25 @@
           auto-format = true; 
           language-servers = [ "rust-analyzer" ];
         }
+        {
+          name = "c";
+          auto-format = true;
+          language-servers = [ "clangd" ];
+        }
+        {
+          name = "cpp"; 
+          auto-format = true;
+          language-servers = [ "clangd" ];
+        }
+        {
+          name = "arduino";
+          scope = "source.arduino";
+          injection-regex = "arduino";
+          file-types = [ "ino" ];
+          roots = [ "sketch.yaml" "arduino-cli.yaml" ".git" ];
+          auto-format = true;
+          language-servers = [ "arduino-language-server" ];
+        }
       ];
       language-server = {
         nixd = {
@@ -31,6 +54,13 @@
         };
         rust-analyzer = {
           command = "rust-analyzer";
+        };
+        arduino-language-server = {
+          command = "arduino-language-server";
+          # args = [
+          #   "-cli" "arduino-cli"
+          #   "-clangd" "clangd" 
+          # ];
         };
       };
     };

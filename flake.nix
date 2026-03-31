@@ -15,32 +15,32 @@
     let
       hostname = "nixos-nvm";
       username = "nautesh";    
+      system = "x86_64-linux";
+      unstablePkgs = import inputs.unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in {
-      templates = {
-        cpp = {
-          path = ./devShells/c;
-          description = "C dev environment";
+        templates = {
+          clang.path = ./devShells/c;
+          python.path = ./devShells/python;
+          rust.path = ./devShells/rust;
+          arduino.path = ./devShells/arduino;
         };
-        python = {
-          path = ./devShells/python;
-          description = "Python dev environment";
+        
+        nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs unstablePkgs; };
+          modules = [
+            ./configuration.nix
+            home-manager.nixosModules.home-manager {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs unstablePkgs; }; 
+                users.${username} = import ./home.nix;
+              };
+            }
+          ];
         };
-        rust = {
-          path = ./devShells/rust;
-          description = "Rust dev environment";
-        };
-      };
-      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; }; 
-            home-manager.users.${username} = import ./home.nix;
-          }
-        ];
-      };
     };
 }

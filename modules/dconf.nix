@@ -1,17 +1,19 @@
-{ ... }:
+{ config, lib, ... }:
 
 let
   enabledExtensions = [
     "appindicatorsupport@rgcjonas.gmail.com"
     "caffeine@patapon.info"
     "clipboard-indicator@tudmotu.com"
-    "color-picker@tuberry"
+    # "color-picker@tuberry"
     "gnome-ui-tune@itstime.tech"
     "just-perfection-desktop@just-perfection"
     "static-workspace-background@CleoMenezesJr.github.io"
-    "Vitals@CoreCoding.com"
+    # "Vitals@CoreCoding.com"
     "screentospace@dilzhan.dev"
     "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
+    "azwallpaper@azwallpaper.gitlab.com"
+    "valent@andyholmes.ca"
   ];
 in
 {
@@ -54,6 +56,11 @@ in
         show-battery = true;
         hot-sensors = [ "_memory_usage_" "_processor_usage_" "__network-rx_max__" ];
         menu-centered = true;
+      };
+      "org/gnome/shell/extensions/azwallpaper" = {
+        slideshow-slide-duration = lib.hm.gvariant.mkTuple [ 1 0 0 ];
+        slideshow-queue-sort-type = "A-Z";
+        slideshow-directory = "${config.home.homeDirectory}/Pictures/wallpaper";
       };
       "org/gnome/shell/extensions/color-picker" = {
         enable-format = true;

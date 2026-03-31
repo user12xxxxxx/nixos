@@ -14,8 +14,16 @@
       settings = {
         main = {
           capslock = "overload(control,esc)";
-          control = "oneshot(control)";
-          shift = "oneshot(shift)";
+          
+          # pagedown = "oneshot(leftshift)";
+          pagedown = "oneshot(shift)";
+
+          leftcontrol = "oneshot(control)";
+          rightcontrol = "oneshot(control)";
+
+          leftshift = "oneshot(shift)";
+          rightshift = "oneshot(shift)";
+
           leftalt = "overload(meta,toggle(l1))";
         };
         l1 = {

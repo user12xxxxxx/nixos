@@ -1,16 +1,14 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, unstablePkgs, ... }:
   
 let
-  # inherit (lib.hm.gvariant) mkUint32;
-  
-  unstable = import inputs.unstable {
-    system = pkgs.stdenv.hostPlatform.system;
-    config.allowUnfree = true;
-  };
+  # unstable = import inputs.unstable {
+    # system = pkgs.stdenv.hostPlatform.system;
+    # config.allowUnfree = true;
+  # };
   
   userPkgsTui = with pkgs; [
     bat 
-    unstable.btop 
+    unstablePkgs.btop 
     nh 
     fish
     scrcpy 
@@ -31,7 +29,7 @@ let
     pika-backup
     kdePackages.kdenlive
     onlyoffice-desktopeditors
-    # telegram-desktop
+    telegram-desktop
     # valent
     gnome-extension-manager
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
@@ -62,12 +60,13 @@ in
   
   imports = [
       ./modules/dconf.nix
-      ./modules/zed.nix
+      # ./modules/zed.nix
       ./modules/git.nix
       ./modules/atuin.nix
       ./modules/configSync.nix
       ./modules/helix.nix
       ./modules/xdg.nix
+      ./modules/drv.nix
     ];
   
   programs = {

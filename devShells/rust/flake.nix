@@ -6,66 +6,44 @@
   };
 
   outputs =
-    { self, nixpkgs }:
+    { nixpkgs }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      base = with pkgs; [
+        cargo
+        rustc
+        rustfmt
+        clippy
+        rust-analyzer
+      ];
+
+      gtk4 = with pkgs; [        
+        pkg-config
+        gtk4
+        glib
+        libadwaita
+        pango
+        cairo
+        gdk-pixbuf
+        gsettings-desktop-schemas
+      ];
     in
     {
       devShells.${system} = {
 
         # BASIC SHELL
         default = pkgs.mkShell {
-          packages = with pkgs; [
-            cargo
-            rustc
-            rustfmt
-            clippy
-            rust-analyzer
-          ];
+          packages = base;
           shellHook = ''
             echo "🦀 Rust"
           '';
         };
 
-        # GTK4
-        gtk4 = pkgs.mkShell {
-          packages = with pkgs; [
-            cargo
-            rustc
-            rustfmt
-            clippy
-            rust-analyzer
-
-            pkg-config
-            gtk4
-            glib
-            pango
-            cairo
-            gdk-pixbuf
-            gsettings-desktop-schemas
-          ];
-          shellHook = ''
-            export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk4}/share/gsettings-schemas/${pkgs.gtk4.name}:$XDG_DATA_DIRS
-            echo "🦀 Rust + 📦 GTK4"
-          '';
-        };
-
         # GTK4 + ADWAITA
         adwaitaGtk4 = pkgs.mkShell {
-          packages = with pkgs; [
-            cargo
-            rustc
-            rustfmt
-            clippy
-            rust-analyzer
-
-            pkg-config
-            gtk4
-            libadwaita
-            glib
-            gsettings-desktop-schemas
-          ];
+          packages = base ++ gtk4;
           shellHook = ''
             export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk4}/share/gsettings-schemas/${pkgs.gtk4.name}:$XDG_DATA_DIRS
             echo "🦀 Rust + 📦 GTK4 + 👣 Adwaita"

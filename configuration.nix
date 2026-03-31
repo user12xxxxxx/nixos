@@ -1,11 +1,11 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
-let
-  unstable = import inputs.unstable {
-    system = pkgs.stdenv.hostPlatform.system;
-    config.allowUnfree = true; 
-  }; 
-in
+# let
+  # unstable = import inputs.unstable {
+    # system = pkgs.stdenv.hostPlatform.system;
+    # config.allowUnfree = true; 
+  # }; 
+# in
 {
   imports = [ 
     ./hardware-configuration.nix 
@@ -52,7 +52,18 @@ in
     };
   };
   
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    sudo.enable = false;
+    doas = {
+      enable = true;
+      extraRules = [{
+        groups = [ "wheel" ];
+        keepEnv = true;
+        persist = true;
+      }];
+    };
+  };
   programs = {
     appimage.enable = true;
     appimage.binfmt = true;
@@ -83,7 +94,7 @@ in
   
   environment.systemPackages = with pkgs; [
     git
-    unstable.micro-with-wl-clipboard
+    # unstablePkgs.micro-with-wl-clipboard
   ];
 
   environment.gnome.excludePackages = (with pkgs; [
