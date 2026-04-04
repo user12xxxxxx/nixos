@@ -10,7 +10,11 @@
     ];
     settings = {
       theme = "base16_transparent";
-     };
+      editor = {
+        line-number = "relative";
+        mouse = false;
+      };
+    };
     languages = { 
       language = [
         {

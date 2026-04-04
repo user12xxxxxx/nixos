@@ -5,7 +5,7 @@
     "yazi" = {
       name = "Yazi";
       genericName = "File Manager";
-      exec = "env ghostty --maximize -e yazi %U"; 
+      exec = "env ghostty  --window-width=135 --window-height=30 -e yazi %U"; 
       terminal = false;
       icon = "yazi";
       categories = [ "System" "FileTools" "FileManager" "ConsoleOnly" ];
@@ -15,7 +15,7 @@
     "btop" = {
       name = "btop";
       genericName = "System Monitor";
-      exec = "env ghostty --maximize -e btop --force-utf";
+      exec = "env ghostty  --window-width=135 --window-height=30 -e btop --force-utf";
       terminal = false;
       icon = "btop";
       categories = [ "System" "Monitor" "ConsoleOnly" ];

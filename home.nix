@@ -39,10 +39,9 @@ let
     appindicator
     caffeine
     clipboard-indicator
-    gnome-40-ui-improvements
-    vitals
     launch-new-instance
     valent
+    wallpaper-slideshow
   ];
 in
 {
