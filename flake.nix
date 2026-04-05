@@ -16,7 +16,7 @@
       hostname = "nixos-nvm";
       username = "nautesh";    
       system = "x86_64-linux";
-      unstablePkgs = import inputs.unstable {
+      unstable = import inputs.unstable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -28,14 +28,14 @@
         arduino.path = ./devShells/arduino;
       };
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs unstablePkgs; };
+        specialArgs = { inherit inputs unstable; };
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit inputs unstablePkgs; }; 
+              extraSpecialArgs = { inherit inputs unstable; }; 
               users.${username} = import ./home.nix;
             };
           }

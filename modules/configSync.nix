@@ -5,11 +5,6 @@ let
   configs = [
     "gtk-3.0"
     "gtk-4.0"
-    # "micro"
-    # "pqivrc"
-    # "satty"
-    # "btop"
-    # "kicad"
     "fish"
     "ghostty"
   ];

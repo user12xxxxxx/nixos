@@ -94,6 +94,7 @@ in
         dash = false;
         startup-status = 0;
         workspace-switcher-size = 15;
+        workspace-switcher-should-show=true;
       };
       "org/gnome/shell/extensions/clipboard-indicator" = {
         toggle-menu = [ "<Super>v" ];

@@ -23,33 +23,7 @@
           leftshift = "oneshot(shift)";
           rightshift = "oneshot(shift)";
 
-          leftalt = "overload(meta,toggle(l1))";
-        };
-        l1 = {
-          t = "1";
-          g = "2";
-          b = "3";
-          r = "4";
-          f = "5";
-          v = "6";
-          d = "backspace";
-          e = "8";
-          c = "7";
-          s = "0";
-          w = "9";
-
-          y = "+";
-          u = "-";
-          i = "*";
-          o = "/";
-          ";" = "=";
-
-          n = "home";
-          m = "end";
-          h = "left";
-          j = "down";
-          k = "up";
-          l = "right";
+          leftalt = "oneshot(meta)";
         };
       };
     };

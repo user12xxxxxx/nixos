@@ -1,11 +1,5 @@
 { pkgs, ... }:
 
-# let
-  # unstable = import inputs.unstable {
-    # system = pkgs.stdenv.hostPlatform.system;
-    # config.allowUnfree = true; 
-  # }; 
-# in
 {
   imports = [ 
     ./hardware-configuration.nix 
@@ -41,8 +35,19 @@
   services = {
   	displayManager.gdm.enable = true;
   	desktopManager.gnome.enable = true;
+
+  	immich = {
+  	  enable = true;
+  	  port = 2283;
+  	  host = "0.0.0.0";
+      openFirewall = true;
+      machine-learning.enable = false;
+  	  mediaLocation = "/run/media/nautesh/newVolume/backup";
+  	};
+  	
   	printing.enable = true;
   	flatpak.enable = true;
+
   	pipewire = {
  	    enable = true;
  	    alsa.enable = true;
@@ -59,6 +64,7 @@
     firefox.enable = true;
     nix-ld.enable = true;
   };
+
   xdg.terminal-exec.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -67,6 +73,7 @@
     auto-optimise-store = true;
   };
 
+  users.users.immich.extraGroups = [ "video" "render" ];
   users.users.nautesh = {
     isNormalUser = true;
     description = "nautesh";
@@ -75,7 +82,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkm0aJHFhElwpNRTVAW1tQ2P39xqpvG4iDpUDMjFrcu nauteshkanojiya@gmail.com"
     ];
   };
-  
+
   fonts.packages = with pkgs; [
   	nerd-fonts.jetbrains-mono
   	noto-fonts
@@ -86,7 +93,6 @@
   
   environment.systemPackages = with pkgs; [
     git
-    # unstable.micro-with-wl-clipboard
   ];
 
   environment.gnome.excludePackages = (with pkgs; [
@@ -102,6 +108,7 @@
     gnome-system-monitor 
     gnome-weather 
     pkgs.gnome-connections
+    showtime
     epiphany    # web browser
     simple-scan # document scanner
     yelp        # help viewer
@@ -109,6 +116,6 @@
     seahorse    # password manager
   ]);
  
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   system.stateVersion = "24.05"; # Did you read the comment?
 }

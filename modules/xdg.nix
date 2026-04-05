@@ -12,15 +12,6 @@
       mimeType = [ "inode/directory" ]; 
     };
       
-    "btop" = {
-      name = "btop";
-      genericName = "System Monitor";
-      exec = "env ghostty  --window-width=135 --window-height=30 -e btop --force-utf";
-      terminal = false;
-      icon = "btop";
-      categories = [ "System" "Monitor" "ConsoleOnly" ];
-    };
-      
     "zen-beta" = {
       name = "Zen Browser";
       genericName = "Web Browser";

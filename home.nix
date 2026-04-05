@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, unstable, ... }:
   
 let
   userPkgsTui = with pkgs; [
@@ -30,6 +30,7 @@ let
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     ghostty
     refine
+    unstable.cine
   ];
   
   gnomeExtensions = with pkgs.gnomeExtensions; [
