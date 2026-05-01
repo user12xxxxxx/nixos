@@ -39,6 +39,7 @@
   	immich = {
   	  enable = true;
   	  port = 2283;
+  	  environment.TZ = "Asia/Kolkata";
   	  host = "0.0.0.0";
       openFirewall = true;
       machine-learning.enable = false;
@@ -77,7 +78,7 @@
   users.users.nautesh = {
     isNormalUser = true;
     description = "nautesh";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkm0aJHFhElwpNRTVAW1tQ2P39xqpvG4iDpUDMjFrcu nauteshkanojiya@gmail.com"
     ];
@@ -115,7 +116,13 @@
     geary       # email client
     seahorse    # password manager
   ]);
- 
-  networking.firewall.enable = true;
+
+  networking.firewall = rec {
+    enable = true;
+    
+    allowedTCPPorts = [ 2283 1883 ];
+    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
+  };
   system.stateVersion = "24.05"; # Did you read the comment?
 }

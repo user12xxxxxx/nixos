@@ -84,7 +84,9 @@ set -g fish_greeting ""
 set -x MANPAGER less
 
 alias b 'btop --force-utf'
+alias e exit
 alias c clear
+alias cat bat
 alias f yazi
 alias gc 'git add . && git commit'
 alias gr 'git reset --soft origin/main'

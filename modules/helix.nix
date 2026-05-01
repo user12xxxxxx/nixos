@@ -5,12 +5,17 @@
     enable = true;
     extraPackages = with pkgs; [
       nixd
-      nil
+      # nil
       wl-clipboard
+      # rust-analyzer
+      # clang-tools # Provides clangd for C/C++
+      # arduino-language-server
+      # arduino-cli
     ];
     settings = {
       theme = "base16_transparent";
       editor = {
+        soft-wrap.enable = true;
         line-number = "relative";
         mouse = false;
       };
@@ -20,7 +25,7 @@
         {
           name = "nix";
           auto-format = true;
-          language-servers = [ "nixd" "nil" ];
+          language-servers = [ "nixd" ];
         }
         {
           name = "rust";
@@ -56,10 +61,10 @@
         };
         arduino-language-server = {
           command = "arduino-language-server";
-          # args = [
-          #   "-cli" "arduino-cli"
-          #   "-clangd" "clangd" 
-          # ];
+          args = [
+            "-cli" "arduino-cli"
+            "-clangd" "clangd" 
+          ];
         };
       };
     };
@@ -69,7 +74,7 @@
     "Helix" = {
       name = "Helix";
       genericName = "Text Editor";
-      exec = "env ghostty --maximize -e hx %F"; 
+      exec = "env ghostty  --window-width=135 --window-height=30 -e hx %F"; 
       terminal = false; 
       icon = "helix"; 
       categories = [ "Utility" "TextEditor" ];

@@ -17,6 +17,11 @@
             arduino-cli
             arduino-language-server
             clang-tools 
+            arduino-ide
+            mosquitto
+            python3
+            python3Packages.pyserial 
+            zlib                     
           ];
           shellHook = ''
             echo "🔌 Arduino Dev Environment Loaded!"

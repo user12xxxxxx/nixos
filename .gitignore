@@ -1,3 +1,4 @@
 /config/micro/buffers
+/test
 test.txt
 /devShells/rust/default.nix

@@ -12,6 +12,7 @@ let
     "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
     "azwallpaper@azwallpaper.gitlab.com"
     "valent@andyholmes.ca"
+    "Vitals@CoreCoding.com"
   ];
 in
 {
@@ -103,6 +104,14 @@ in
         slideshow-slide-duration = lib.hm.gvariant.mkTuple [ 1 0 0 ];
         slideshow-queue-sort-type = "A-Z";
         slideshow-directory = "${config.home.homeDirectory}/Pictures/wallpaper";
+      };
+      "org/gnome/shell/extensions/vitals" = {
+        update-time = 1;
+        show-fan = false;
+        icon-style = 1;
+        show-battery = true;
+        hot-sensors = [ "_memory_usage_" "_processor_usage_" "__network-rx_max__" ];
+        menu-centered = true;
       };
       "org/gnome/shell/extensions/color-picker" = {
         enable-format = true;

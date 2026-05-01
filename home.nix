@@ -36,12 +36,14 @@ let
   gnomeExtensions = with pkgs.gnomeExtensions; [
     static-workspace-background
     just-perfection
+    vitals
     color-picker
     appindicator
     caffeine
     clipboard-indicator
     launch-new-instance
     valent
+    unstable.gnomeExtensions.copyous
     wallpaper-slideshow
   ];
 in
