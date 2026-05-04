@@ -12,8 +12,11 @@
   }];
   
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      systemd-boot.enable = true;
+      systemd-boot.configurationLimit = 5;
+      efi.canTouchEfiVariables = true;
+    };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = ["resume=UUID=419d433e-2ff1-4359-87ad-ecd397133677"];
   };
@@ -69,9 +72,16 @@
   xdg.terminal-exec.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      # dates = "weekly";
+      options = "--delete-older-than 2d";
+    };
   };
 
   users.users.immich.extraGroups = [ "video" "render" ];
@@ -91,7 +101,7 @@
   	jetbrains-mono
   	font-awesome
   ];
-  
+ 
   environment.systemPackages = with pkgs; [
     git
   ];

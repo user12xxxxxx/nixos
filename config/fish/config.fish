@@ -78,8 +78,8 @@ bind \cr _atuin_search
 bind -M insert \cr _atuin_search
 
 # set TERM xterm-256color
-# set EDITOR micro
-# set VISUAL "zeditor ."
+set EDITOR hx
+set VISUAL zeditor
 set -g fish_greeting ""
 set -x MANPAGER less
 

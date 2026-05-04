@@ -14,10 +14,10 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
       hostname = "nixos-nvm";
-      username = "nautesh";    
+      username = "nautesh";
       system = "x86_64-linux";
       unstable = import inputs.unstable {
         inherit system;
@@ -38,7 +38,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit inputs unstable; }; 
+              extraSpecialArgs = { inherit inputs unstable; };
               users.${username} = import ./home.nix;
             };
           }

@@ -30,7 +30,7 @@ let
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     ghostty
     refine
-    unstable.cine
+    # unstable.cine
   ];
   
   gnomeExtensions = with pkgs.gnomeExtensions; [
@@ -53,6 +53,10 @@ in
     homeDirectory = "/home/nautesh";
     stateVersion = "25.11"; 
     packages = userPkgsTui ++ userPkgsGui ++ userCursors ++ gnomeExtensions;
+    sessionVariables = {
+      EDITOR = "helix";
+      VISUAL = "zed";
+    };
   };
   
   imports = [
@@ -64,6 +68,7 @@ in
       ./modules/configSync.nix
       ./modules/helix.nix
       ./modules/xdg.nix
+      ./modules/zed.nix
     ];
   
   programs = {
