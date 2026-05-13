@@ -2,15 +2,15 @@
 
 let
   enabledExtensions = [
-    "appindicatorsupport@rgcjonas.gmail.com"
-    "caffeine@patapon.info"
+    # "appindicatorsupport@rgcjonas.gmail.com"
+    # "caffeine@patapon.info"
     "clipboard-indicator@tudmotu.com"
     # "color-picker@tuberry"
     "just-perfection-desktop@just-perfection"
     "static-workspace-background@CleoMenezesJr.github.io"
-    "screentospace@dilzhan.dev"
+    # "screentospace@dilzhan.dev"
     "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
-    "azwallpaper@azwallpaper.gitlab.com"
+    # "azwallpaper@azwallpaper.gitlab.com"
     "valent@andyholmes.ca"
     "Vitals@CoreCoding.com"
   ];

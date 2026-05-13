@@ -20,6 +20,9 @@
             arduino-ide
             mosquitto
             python3
+            python3Packages.scipy
+            python3Packages.matplotlib
+            python3Packages.pandas
             python3Packages.pyserial 
             zlib                     
           ];

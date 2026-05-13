@@ -8,6 +8,7 @@ let
     fish
     scrcpy 
     yazi
+    ncdu
     gnome-pomodoro
     adw-gtk3
     eza
@@ -69,6 +70,7 @@ in
       ./modules/helix.nix
       ./modules/xdg.nix
       ./modules/zed.nix
+      # ./modules/nvim.nix
     ];
   
   programs = {

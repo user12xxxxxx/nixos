@@ -65,7 +65,7 @@
   programs = {
     appimage.enable = true;
     appimage.binfmt = true;
-    firefox.enable = true;
+    # firefox.enable = true;
     nix-ld.enable = true;
   };
 
@@ -96,10 +96,7 @@
 
   fonts.packages = with pkgs; [
   	nerd-fonts.jetbrains-mono
-  	noto-fonts
-  	noto-fonts-color-emoji
-  	jetbrains-mono
-  	font-awesome
+  	nerd-fonts.victor-mono
   ];
  
   environment.systemPackages = with pkgs; [

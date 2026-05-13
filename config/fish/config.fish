@@ -79,7 +79,8 @@ bind -M insert \cr _atuin_search
 
 # set TERM xterm-256color
 set EDITOR hx
-set VISUAL zeditor
+# set VISUAL zeditor
+set VISUAL hx
 set -g fish_greeting ""
 set -x MANPAGER less
 
