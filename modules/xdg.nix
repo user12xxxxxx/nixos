@@ -5,13 +5,13 @@
     "yazi" = {
       name = "Yazi";
       genericName = "File Manager";
-      exec = "env ghostty  --window-width=135 --window-height=30 -e yazi %U"; 
+      exec = "env ghostty  --window-width=135 --window-height=30 -e yazi %U";
       terminal = false;
       icon = "yazi";
       categories = [ "System" "FileTools" "FileManager" "ConsoleOnly" ];
-      mimeType = [ "inode/directory" ]; 
+      mimeType = [ "inode/directory" ];
     };
-      
+
     "zen-beta" = {
       name = "Zen Browser";
       genericName = "Web Browser";
@@ -20,7 +20,7 @@
       terminal = false;
       type = "Application";
       categories = [ "Network" "WebBrowser" ];
-      
+
       mimeType = [
         "text/html"
         "text/xml"

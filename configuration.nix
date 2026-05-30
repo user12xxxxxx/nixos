@@ -1,16 +1,16 @@
 { pkgs, ... }:
 
 {
-  imports = [ 
-    ./hardware-configuration.nix 
+  imports = [
+    ./hardware-configuration.nix
     ./modules/keyd.nix
   ];
-    
+
   swapDevices = [{
     device="/dev/disk/by-uuid/419d433e-2ff1-4359-87ad-ecd397133677";
     priority = 100;
   }];
-  
+
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -21,17 +21,17 @@
     kernelParams = ["resume=UUID=419d433e-2ff1-4359-87ad-ecd397133677"];
   };
 
-  fileSystems."/run/media/nautesh/newVolume" = { 
+  fileSystems."/run/media/nautesh/newVolume" = {
     device = "/dev/disk/by-uuid/06FCBB61FCBB4A27";
     fsType = "ntfs";
-    options = [ "rw" "nofail" ];      
+    options = [ "rw" "nofail" ];
   };
 
   networking = {
     hostName = "nixos-nvm";
     networkmanager.enable = true;
   };
-    
+
   time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_IN";
 
@@ -48,7 +48,7 @@
       machine-learning.enable = false;
   	  mediaLocation = "/run/media/nautesh/newVolume/backup";
   	};
-  	
+
   	printing.enable = true;
   	flatpak.enable = true;
 
@@ -60,7 +60,7 @@
  	    wireplumber.enable = true;
     };
   };
-  
+
   security.rtkit.enable = true;
   programs = {
     appimage.enable = true;
@@ -79,7 +79,7 @@
     };
     gc = {
       automatic = true;
-      # dates = "weekly";
+      dates = "daily";
       options = "--delete-older-than 2d";
     };
   };
@@ -98,7 +98,7 @@
   	nerd-fonts.jetbrains-mono
   	nerd-fonts.victor-mono
   ];
- 
+
   environment.systemPackages = with pkgs; [
     git
   ];
@@ -107,14 +107,14 @@
     gnome-tour
     gnome-console
     gnome-text-editor
-    gnome-clocks 
+    gnome-clocks
     gnome-contacts
-    gnome-font-viewer 
-    gnome-logs 
-    gnome-maps 
-    gnome-music  
-    gnome-system-monitor 
-    gnome-weather 
+    gnome-font-viewer
+    gnome-logs
+    gnome-maps
+    gnome-music
+    gnome-system-monitor
+    gnome-weather
     pkgs.gnome-connections
     showtime
     epiphany    # web browser
@@ -126,7 +126,7 @@
 
   networking.firewall = rec {
     enable = true;
-    
+
     allowedTCPPorts = [ 2283 1883 ];
     allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
     allowedUDPPortRanges = allowedTCPPortRanges;

@@ -1,19 +1,19 @@
 { pkgs, inputs, unstable, ... }:
-  
+
 let
   userPkgsTui = with pkgs; [
-    bat 
-    btop 
-    nh 
+    bat
+    btop
+    nh
     fish
-    scrcpy 
+    scrcpy
     yazi
     ncdu
     gnome-pomodoro
     adw-gtk3
     eza
   ];
-  
+
   userCursors = with pkgs; [
     bibata-cursors
     google-cursor
@@ -21,7 +21,7 @@ let
 
   userPkgsGui = with pkgs; [
     amberol
-    packet  
+    packet
     pika-backup
     kdePackages.kdenlive
     onlyoffice-desktopeditors
@@ -31,20 +31,16 @@ let
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     ghostty
     refine
-    # unstable.cine
+    cine
   ];
-  
+
   gnomeExtensions = with pkgs.gnomeExtensions; [
-    static-workspace-background
     just-perfection
-    vitals
     color-picker
-    appindicator
     caffeine
-    clipboard-indicator
     launch-new-instance
-    valent
-    unstable.gnomeExtensions.copyous
+    # valent
+    copyous
     wallpaper-slideshow
   ];
 in
@@ -52,27 +48,26 @@ in
   home = {
     username = "nautesh";
     homeDirectory = "/home/nautesh";
-    stateVersion = "25.11"; 
+    stateVersion = "25.11";
     packages = userPkgsTui ++ userPkgsGui ++ userCursors ++ gnomeExtensions;
     sessionVariables = {
       EDITOR = "helix";
       VISUAL = "zed";
     };
   };
-  
+
   imports = [
-      ./modules/dconf.nix
-      ./modules/btop.nix
-      ./modules/drv.nix   
-      ./modules/git.nix
-      ./modules/atuin.nix
-      ./modules/configSync.nix
-      ./modules/helix.nix
-      ./modules/xdg.nix
-      ./modules/zed.nix
-      # ./modules/nvim.nix
-    ];
-  
+    ./modules/dconf.nix
+    ./modules/btop.nix
+    ./modules/drv.nix
+    ./modules/git.nix
+    ./modules/atuin.nix
+    ./modules/configSync.nix
+    ./modules/helix.nix
+    ./modules/xdg.nix
+    ./modules/zed.nix
+  ];
+
   programs = {
     home-manager.enable = true;
   };

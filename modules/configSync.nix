@@ -7,6 +7,7 @@ let
     "gtk-4.0"
     "fish"
     "ghostty"
+    "yazi"
   ];
 in
 {

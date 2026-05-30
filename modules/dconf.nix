@@ -2,17 +2,12 @@
 
 let
   enabledExtensions = [
-    # "appindicatorsupport@rgcjonas.gmail.com"
-    # "caffeine@patapon.info"
-    "clipboard-indicator@tudmotu.com"
-    # "color-picker@tuberry"
+    "caffeine@patapon.info"
     "just-perfection-desktop@just-perfection"
     "static-workspace-background@CleoMenezesJr.github.io"
-    # "screentospace@dilzhan.dev"
     "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
-    # "azwallpaper@azwallpaper.gitlab.com"
-    "valent@andyholmes.ca"
-    "Vitals@CoreCoding.com"
+    "copyous@boerdereinar.dev"
+    # "valent@andyholmes.ca"
   ];
 in
 {
@@ -22,6 +17,7 @@ in
       "org/gnome/shell" = {
         enabled-extensions = enabledExtensions;
       };
+
       "org/gnome/desktop/interface" = {
         show-battery-percentage = true;
         gtk-theme = "adw-gtk3-dark";
@@ -30,6 +26,7 @@ in
         attach-modal-dialogs = true;
         overlay-key = "";
       };
+
       "org/gnome/shell/keybindings" = {
         toggle-quick-settings = [];
         toggle-application-view = [];
@@ -41,13 +38,13 @@ in
         move-to-workspace-right = [ "<Super>f" ];
         switch-to-workspace-left = [ "<Super>a" ];
         switch-to-workspace-right = [ "<Super>s" ];
-        switch-windows = [ "<Super>e" ];
         toggle-maximized = [ "<Super>Up" ];
         switch-applications = [ "<Super>w" ];
         switch-applications-backward = [ "<Shift><Super>w" ];
         cycle-group = ["<Super>e"];
         cycle-group-backward = ["<Shift><Super>e"];
       };
+
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
@@ -79,12 +76,8 @@ in
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
         binding = "<Super>g";
-        command = "env ghostty --window-width=135 --window-height=30 -e yazi";
+        command = ''sh -c "ghostty --window-width=135 --window-height=30 -e yazi"'';
         name = "yazi";
-      };
-      # EXTENSIONS
-      "org/gnome/shell/extensions/appindicator" = {
-        legacy-tray-enabled = false;
       };
       "org/gnome/shell/extensions/caffeine" = {
         restore-state = true;
@@ -95,26 +88,10 @@ in
         dash = false;
         startup-status = 0;
         workspace-switcher-size = 15;
-        workspace-switcher-should-show=true;
+        workspace-switcher-should-show = true;
       };
-      "org/gnome/shell/extensions/clipboard-indicator" = {
-        toggle-menu = [ "<Super>v" ];
-      };
-      "org/gnome/shell/extensions/azwallpaper" = {
-        slideshow-slide-duration = lib.hm.gvariant.mkTuple [ 1 0 0 ];
-        slideshow-queue-sort-type = "A-Z";
-        slideshow-directory = "${config.home.homeDirectory}/Pictures/wallpaper";
-      };
-      "org/gnome/shell/extensions/vitals" = {
-        update-time = 1;
-        show-fan = false;
-        icon-style = 1;
-        show-battery = true;
-        hot-sensors = [ "_memory_usage_" "_processor_usage_" "__network-rx_max__" ];
-        menu-centered = true;
-      };
-      "org/gnome/shell/extensions/color-picker" = {
-        enable-format = true;
+      "org/gnome/shell/extensions/copyous" = {
+        open-clipboard-dialog-shortcut = [ "<Super>v" ];
       };
     };
   };
