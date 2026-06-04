@@ -57,7 +57,7 @@ in
   };
 
   imports = [
-    ./modules/dconf.nix
+    ./modules/dconf/dconf.nix
     ./modules/btop.nix
     ./modules/drv.nix
     ./modules/git.nix

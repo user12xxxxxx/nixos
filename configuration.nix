@@ -54,10 +54,10 @@
 
   	pipewire = {
  	    enable = true;
- 	    alsa.enable = true;
- 	    alsa.support32Bit = true;
- 	    pulse.enable = true;
- 	    wireplumber.enable = true;
+ 	    # alsa.enable = true;
+ 	    # alsa.support32Bit = true;
+ 	    # pulse.enable = true;
+ 	    # wireplumber.enable = true;
     };
   };
 
@@ -97,6 +97,9 @@
   fonts.packages = with pkgs; [
   	nerd-fonts.jetbrains-mono
   	nerd-fonts.victor-mono
+  	noto-fonts-cjk-sans
+  	noto-fonts-cjk-serif
+  	ipafont
   ];
 
   environment.systemPackages = with pkgs; [
