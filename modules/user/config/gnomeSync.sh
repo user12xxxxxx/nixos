@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
 CONFIG_DIR="$HOME/.hp14"
-DCONF_DIR="$CONFIG_DIR/modules/dconf"
+# DCONF_DIR="$CONFIG_DIR/modules/gnome"
+DCONF_DIR="$CONFIG_DIR/modules/user/gnome/settings"
 
 # Maping files
 declare -A DCONF_PATHS=(
     ["extensions"]="/org/gnome/shell/extensions/"
     ["interface"]="/org/gnome/desktop/interface/"
     ["mutter"]="/org/gnome/mutter/"
-    ["periferals"]="/org/gnome/desktop/peripherals/"
-    ["shell-keybinds"]="/org/gnome/shell/keybindings/"
+    ["peripherals"]="/org/gnome/desktop/peripherals/"
+    ["shellKeybinds"]="/org/gnome/shell/keybindings/"
     ["wm"]="/org/gnome/desktop/wm/"
-    ["custumKeybinds"]="/org/gnome/settings-daemon/plugins/media-keys/"
+    ["customKeybinds"]="/org/gnome/settings-daemon/plugins/media-keys/"
 )
 
 echo "Syncing GNOME settings to $DCONF_DIR"

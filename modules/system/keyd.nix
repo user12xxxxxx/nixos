@@ -20,9 +20,6 @@
           leftcontrol = "oneshot(control)";
           rightcontrol = "oneshot(control)";
 
-          leftshift = "oneshot(shift)";
-          rightshift = "oneshot(shift)";
-
           leftalt = "oneshot(meta)";
 
           tab = "overload(l1, tab)";
@@ -45,7 +42,7 @@
           i = "*";
           o = "/";
           ";" = "=";
- 
+
           n = "home";
           m = "end";
           h = "left";

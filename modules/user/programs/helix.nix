@@ -8,7 +8,8 @@
       wl-clipboard
     ];
     settings = {
-      theme = "nyxvamp-veil";
+      theme = "gruvbox-material";
+      # theme = "base16_transparent";
       editor = {
         trim-trailing-whitespace = true;
         indent-guides.render = true;

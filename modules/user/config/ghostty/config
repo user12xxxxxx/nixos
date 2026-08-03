@@ -1,0 +1,14 @@
+gtk-titlebar = false
+cursor-style = bar
+font-size = 16
+
+theme = dark:Gruvbox Material Dark, light:Adwaita
+window-padding-color = "extend"
+
+font-family = "JetBrainsMonoNL NFM"
+# font-family = "VictorMono NFM"
+
+# window-padding-x = 10
+# window-padding-y = 10
+window-width = 50
+window-height = 12

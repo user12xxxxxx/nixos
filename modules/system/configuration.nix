@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/keyd.nix
+    ./keyd.nix
   ];
 
   swapDevices = [{
@@ -17,7 +17,7 @@
       systemd-boot.configurationLimit = 5;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages;
     kernelParams = ["resume=UUID=419d433e-2ff1-4359-87ad-ecd397133677"];
   };
 
@@ -33,11 +33,15 @@
   };
 
   time.timeZone = "Asia/Kolkata";
-  i18n.defaultLocale = "en_IN";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   services = {
   	displayManager.gdm.enable = true;
   	desktopManager.gnome.enable = true;
+
+    udev.extraRules = ''
+      SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", ATTR{idProduct}=="0204", MODE="0666"
+    '';
 
   	immich = {
   	  enable = true;
@@ -52,13 +56,7 @@
   	printing.enable = true;
   	flatpak.enable = true;
 
-  	pipewire = {
- 	    enable = true;
- 	    # alsa.enable = true;
- 	    # alsa.support32Bit = true;
- 	    # pulse.enable = true;
- 	    # wireplumber.enable = true;
-    };
+  	pipewire.enable = true;
   };
 
   security.rtkit.enable = true;
@@ -67,6 +65,14 @@
     appimage.binfmt = true;
     # firefox.enable = true;
     nix-ld.enable = true;
+    steam.enable = true;
+    fish.enable = true;
+    # hyprland.enable = true;
+
+    nautilus-open-any-terminal = {
+      enable = true;
+      terminal = "null";
+    };
   };
 
   xdg.terminal-exec.enable = true;
@@ -87,8 +93,10 @@
   users.users.immich.extraGroups = [ "video" "render" ];
   users.users.nautesh = {
     isNormalUser = true;
+    shell = pkgs.fish;
     description = "nautesh";
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    linger = true;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkm0aJHFhElwpNRTVAW1tQ2P39xqpvG4iDpUDMjFrcu nauteshkanojiya@gmail.com"
     ];
@@ -118,19 +126,22 @@
     gnome-music
     gnome-system-monitor
     gnome-weather
-    pkgs.gnome-connections
+    gnome-connections
     showtime
+    loupe
     epiphany    # web browser
     simple-scan # document scanner
     yelp        # help viewer
     geary       # email client
     seahorse    # password manager
+    decibels
+    gnome-software
   ]);
 
   networking.firewall = rec {
     enable = true;
 
-    allowedTCPPorts = [ 2283 1883 ];
+    allowedTCPPorts = [ 2283 1883 9300 ];
     allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };

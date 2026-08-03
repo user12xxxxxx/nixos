@@ -6,8 +6,11 @@ with lib.hm.gvariant;
 {
   dconf.settings = {
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/" ];
+      logout = [];
       rotate-video-lock-static = [ "<Super>o" "XF86RotationLockToggle" ];
+      screensaver = [];
+      shutdown = [];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -36,8 +39,14 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
       binding = "<Super>g";
-      command = "sh -c \"ghostty --window-width=135 --window-height=30 -e yazi\"";
-      name = "yazi";
+      command = "sh -c \"ghostty --maximize\"";
+      name = "terminalF";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5" = {
+      binding = "<Super>Print";
+      command = "gradia --screenshot=INTERACTIVE";
+      name = "gradia";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6" = {

@@ -16,6 +16,7 @@ with lib.hm.gvariant;
       font-antialiasing = "rgba";
       gtk-theme = "adw-gtk3-dark";
       icon-theme = "Adwaita";
+      locate-pointer = false;
       show-battery-percentage = true;
       text-scaling-factor = 1.0;
       toolkit-accessibility = false;

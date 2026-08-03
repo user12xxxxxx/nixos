@@ -7,8 +7,8 @@ with lib.hm.gvariant;
   dconf.settings = {
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [];
-      shift-overview-down = [ "<Super><Alt>Down" ];
-      shift-overview-up = [ "<Super><Alt>Up" ];
+      shift-overview-down = [];
+      shift-overview-up = [];
       toggle-application-view = [];
       toggle-message-tray = [];
       toggle-overview = [ "<Super>space" ];

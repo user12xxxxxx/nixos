@@ -23,12 +23,12 @@ max_height      = 19000
 cache_dir       = "~/.cache/yazi/cache/"
 image_delay     = 0
 
-[opener]
-edit = [
-  { run = "hx %s", block = true, for = "unix" },
-]
+# [opener]
+# edit = [
+#   { run = "hx %s", block = true, for = "unix" },
+# ]
 
-[open]
-rules = [
-  { mime = "*", use = [ "edit" ] },
-]
+# [open]
+# rules = [
+#   { mime = "*", use = [ "edit" ] },
+# ]
