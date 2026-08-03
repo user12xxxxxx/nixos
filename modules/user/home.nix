@@ -62,4 +62,28 @@ in
   programs = {
     home-manager.enable = true;
   };
+
+  systemd.user.services.tmux-autosave = {
+    Unit = {
+      Description = "Auto-save tmux environment via tmux-resurrect";
+    };
+    Service = {
+      Type = "oneshot";
+      # Ensure the path perfectly matches where your TPM plugins are downloaded
+      ExecStart = "${pkgs.bash}/bin/bash %h/.config/tmux/plugins/tmux-resurrect/scripts/save.sh";
+    };
+  };
+
+  systemd.user.timers.tmux-autosave = {
+    Unit = {
+      Description = "Run tmux-autosave every 5 minutes";
+    };
+    Timer = {
+      OnCalendar = "*:0/05";
+      Persistent = true;
+    };
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
+  };
 }
