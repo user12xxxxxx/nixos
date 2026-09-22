@@ -6,10 +6,13 @@ with lib.hm.gvariant;
 {
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
+      activate-window-menu = [ "" ];
       close = [ "<Super>q" ];
       cycle-group = [ "<Super>e" ];
       cycle-group-backward = [ "<Shift><Super>e" ];
       maximize = [];
+      maximize-horizontally = [];
+      maximize-vertically = [];
       minimize = [];
       move-to-monitor-down = [ "<Super><Shift>Down" ];
       move-to-monitor-left = [ "<Super><Shift>Left" ];
@@ -34,7 +37,7 @@ with lib.hm.gvariant;
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
       toggle-maximized = [ "<Super>Up" ];
-      unmaximize = [ "<Super>Down" "<Alt>F5" ];
+      unmaximize = [ "<Alt>F5" ];
     };
 
     "org/gnome/desktop/wm/preferences" = {

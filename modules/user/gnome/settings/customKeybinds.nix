@@ -55,5 +55,11 @@ with lib.hm.gvariant;
       name = "jjd";
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/look-toggle" = {
+      binding = "<Alt>space";
+      command = "dbus-send --session --type=method_call --dest=com.look.Desktop /com/look/Desktop com.look.Desktop.Toggle";
+      name = "Look Toggle";
+    };
+
   };
 }

@@ -6,9 +6,9 @@ with lib.hm.gvariant;
 {
   dconf.settings = {
     "org/gnome/mutter" = {
-      attach-modal-dialogs = true;
+      attach-modal-dialogs = false;
       dynamic-workspaces = true;
-      edge-tiling = true;
+      edge-tiling = false;
       overlay-key = "";
       workspaces-only-on-primary = true;
     };

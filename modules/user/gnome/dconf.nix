@@ -7,9 +7,11 @@ let
     "just-perfection-desktop@just-perfection"
     "static-workspace-background@CleoMenezesJr.github.io"
     "Vitals@CoreCoding.com"
+    "azwallpaper@azwallpaper.gitlab.com"
+    "user-accent-colors@fabito02"
     # "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
     # "copyous@boerdereinar.dev"
-    # "mouse-warp@acristoffers.me"
+    "mouse-warp@acristoffers.me"
     # "valent@andyholmes.ca"
   ];
 

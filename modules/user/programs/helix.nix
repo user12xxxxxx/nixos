@@ -9,7 +9,7 @@
     ];
     settings = {
       theme = "gruvbox-material";
-      # theme = "base16_transparent";
+      # theme = "base16_terminal";
       editor = {
         trim-trailing-whitespace = true;
         indent-guides.render = true;
@@ -36,6 +36,21 @@
           name = "rust";
           auto-format = true;
           language-servers = [ "rust-analyzer" ];
+          debugger = {
+            name = "codelldb";
+            transport = "stdio";
+            command = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
+            templates = [
+              {
+                name = "binary";
+                request = "launch";
+                completion = [ { name = "binary"; completion = "filename"; } ];
+                args = {
+                  program = "{0}";
+                };
+              }
+            ];
+          };
         }
         {
           name = "c";
@@ -85,7 +100,7 @@
     "Helix" = {
       name = "Helix";
       genericName = "Text Editor";
-      exec = "env ghostty --window-width=135 --window-height=30 -e hx %F";
+      exec = "env ghostty --maximize -e hx %F";
       terminal = false;
       icon = "helix";
       categories = [

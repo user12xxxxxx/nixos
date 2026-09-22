@@ -24,6 +24,9 @@
           rustfmt
           clippy
           rust-analyzer
+
+          # lldb
+          vscode-extensions.vadimcn.vscode-lldb
         ];
 
         embeddedRust = pkgs.rust-bin.stable.latest.default.override {
@@ -40,53 +43,57 @@
       in {
         devShells = {
 
-          # Default Rust shell
-          default = pkgs.mkShell {
-            packages = commonPackages;
+        # Default Rust shell
+        default = pkgs.mkShell {
+          packages = commonPackages;
 
-            shellHook = ''
+          shellHook = ''
+            if [[ -n "$PS1" ]]; then
               echo "🦀 Rust"
-            '';
-          };
-
-          # GTK4
-          gtk4 = pkgs.mkShell {
-            packages = commonPackages ++ (with pkgs; [
-              cairo
-              gdk-pixbuf
-              glib
-              gtk4
-              gsettings-desktop-schemas
-              libadwaita
-              pango
-              pkg-config
-            ]);
-
-            shellHook = ''
-              export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk4}/share/gsettings-schemas/${pkgs.gtk4.name}:$XDG_DATA_DIRS
-
-              echo "🦀 Rust + 📦 GTK4 + 👣 Adwaita"
-            '';
-          };
-
-          # Embedded / micro:bit
-          microbit = pkgs.mkShell {
-            packages = with pkgs; [
-              embeddedRust
-
-              cargo-binutils
-              probe-rs-tools
-
-              gdb
-              minicom
-
-              pkg-config
-            ];
-
-            shellHook = ''
-              echo "micro:bit development environment"
-            '';
-          };
+            fi
+             # echo "🦀 Rust"
+          '';
         };
-      });
+
+        # GTK4
+        gtk4 = pkgs.mkShell {
+          packages = commonPackages ++ (with pkgs; [
+            cairo
+            gdk-pixbuf
+            glib
+            gtk4
+            gsettings-desktop-schemas
+            libadwaita
+            pango
+            pkg-config
+          ]);
+
+          shellHook = ''
+            export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk4}/share/gsettings-schemas/${pkgs.gtk4.name}:$XDG_DATA_DIRS
+
+            echo "🦀 Rust + 📦 GTK4 + 👣 Adwaita"
+          '';
+        };
+
+        # Embedded / micro:bit
+        microbit = pkgs.mkShell {
+          packages = with pkgs; [
+            embeddedRust
+
+            cargo-binutils
+            probe-rs-tools
+
+            gdb
+            minicom
+
+            pkg-config
+          ];
+
+          shellHook = ''
+            echo "micro:bit development environment"
+          '';
+        };
+      };
+    }
+  );
 }

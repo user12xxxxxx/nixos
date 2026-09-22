@@ -1,5 +1,5 @@
 alias b 'btop --force-utf'
-alias t 'touch'
+alias t touch
 alias q exit
 alias c clear
 alias cat bat

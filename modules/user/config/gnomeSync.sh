@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 CONFIG_DIR="$HOME/.hp14"
-# DCONF_DIR="$CONFIG_DIR/modules/gnome"
 DCONF_DIR="$CONFIG_DIR/modules/user/gnome/settings"
 
 # Maping files
@@ -30,8 +29,10 @@ for name in "${!DCONF_PATHS[@]}"; do
         echo "{ dconf.settings = {}; }" > "$output_file"
     else
         echo "  ↳ Dumping $name -> ${name}.nix..."
-        # Piping it into dconf2nix
-        echo "$dump_data" | nix run nixpkgs#dconf2nix -- --root "$path" > "$output_file"
+        echo "$dump_data" |
+            grep -E -v "^slideshow-(queue|current-slide-index|current-wallpaper|time-of-slide-start|timer-remaining)=" |
+            sed -E 's/u?int(16|32|64) //g' |
+            nix run nixpkgs#dconf2nix -- --root "$path" > "$output_file"
     fi
 done
 

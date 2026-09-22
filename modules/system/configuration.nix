@@ -18,7 +18,7 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages;
-    kernelParams = ["resume=UUID=419d433e-2ff1-4359-87ad-ecd397133677"];
+    resumeDevice = "/dev/disk/by-uuid/419d433e-2ff1-4359-87ad-ecd397133677";
   };
 
   fileSystems."/run/media/nautesh/newVolume" = {
@@ -45,7 +45,7 @@
 
   	immich = {
   	  enable = true;
-  	  port = 2283;
+  	  port = 2083;
   	  environment.TZ = "Asia/Kolkata";
   	  host = "0.0.0.0";
       openFirewall = true;
@@ -65,9 +65,9 @@
     appimage.binfmt = true;
     # firefox.enable = true;
     nix-ld.enable = true;
-    steam.enable = true;
+    # steam.enable = true;
     fish.enable = true;
-    # hyprland.enable = true;
+    hyprland.enable = true;
 
     nautilus-open-any-terminal = {
       enable = true;
@@ -141,7 +141,7 @@
   networking.firewall = rec {
     enable = true;
 
-    allowedTCPPorts = [ 2283 1883 9300 ];
+    allowedTCPPorts = [ 2083 1883 9300 ];
     allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };

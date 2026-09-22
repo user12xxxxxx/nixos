@@ -10,3 +10,11 @@ end
 #     and not set -q TMUX
 #     exec bash $HOME/.config/tmux/scripts/sessionizer.sh
 # end
+
+# function q --description "Smart quit: detach tmux or exit terminal"
+#     if set -q TMUX
+#         tmux kill-pane -t .
+#     else
+#         exit
+#     end
+# end
